@@ -1,11 +1,15 @@
 ﻿@page "/route"
 @page "/hannes/route"
 @page "/route/{Id:int}"
+
 <h3>Route1</h3>
 @Id
+@Filter
 
 @code {
     [Parameter]
     public int Id { get; set; }
+    [SupplyParameterFromQuery(Name ="filter1")]
+    public string? Filter { get; set; }
 
 }
