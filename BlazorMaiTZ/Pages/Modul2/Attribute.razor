@@ -1,0 +1,20 @@
+﻿@page "/attr"
+<h3>Attribute</h3>
+<button class="btn btn-outline-primary" 
+
+@onclick="click">click</button>
+<input class="form-control" @bind="variable" @ref="input1"/>
+
+<input class="form-control" @bind="variable"/>
+<div style="color:@variable">@variable</div>
+<Component @ref="Component1"></Component>
+@code {
+    Component Component1;
+    ElementReference input1;
+    string variable;
+    void click()
+    {
+        input1.FocusAsync();   
+
+    }
+}
