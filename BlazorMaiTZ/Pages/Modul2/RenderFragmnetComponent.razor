@@ -1,0 +1,23 @@
+﻿@page "/rf"
+<h3>RF</h3>
+@rf
+@ms
+@((MarkupString)ms)
+@*<style>
+h3 {
+    color:red;
+}
+</style>
+<script suppress-error="BL9992">
+alert("hallo");
+</script>*@
+
+
+
+@code {
+    RenderFragment rf =
+    @<div>test</div>
+    ;
+
+    string ms = "<div>test</div>";
+}
