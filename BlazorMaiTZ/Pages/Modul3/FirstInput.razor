@@ -1,0 +1,23 @@
+﻿@page "/f1"
+<h3>FirstInput</h3>
+<input @onkeypress="_=>keydown(_)"/>
+<input @bind-value="eingabe" @bind-value:event="oninput"/>
+<input value="test" />
+@taste
+<br />
+@eingabe
+
+@code {
+    string taste;
+    string eingabe;
+    void keydown(KeyboardEventArgs e)
+    {
+        taste = e.Key;
+        if (e.Key=="a")
+        {
+           
+
+        }
+
+    }
+}
