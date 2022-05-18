@@ -1,6 +1,6 @@
 ﻿@page "/f1"
 <h3>FirstInput</h3>
-<input @onkeypress="_=>keydown(_)"/>
+<input @bind="eingabe0" @onkeypress="_=>keydown(_)" @onkeypress:preventDefault/>
 <input @bind-value="eingabe" @bind-value:event="oninput"/>
 <input value="test" />
 @taste
@@ -10,12 +10,14 @@
 @code {
     string taste;
     string eingabe;
+    string eingabe0;
     void keydown(KeyboardEventArgs e)
     {
         taste = e.Key;
-        if (e.Key=="a")
+        if (e.Key!="a")
         {
-           
+
+            eingabe0 += e.Key;
 
         }
 
