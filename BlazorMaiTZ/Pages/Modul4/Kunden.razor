@@ -1,0 +1,17 @@
+﻿@page "/kunden"
+@using Models
+@inject NorthwindContext db 
+<h3>Kunden</h3>
+<input class="form-control" @bind-value="suche" @bind-value:event="oninput"/>
+<div class="list-group">
+    @foreach (var item in db.Customers.Where(x=>x.CompanyName.Contains(suche)))
+    {
+        <div class="list-group-item">
+            @item.CompanyName
+        </div>
+    }
+
+</div>
+@code {
+    string suche;
+}
