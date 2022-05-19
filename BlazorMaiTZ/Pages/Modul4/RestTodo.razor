@@ -1,0 +1,34 @@
+﻿@page "/rest"
+@inject IHttpClientFactory http;
+<h3>RestTodo</h3>
+<button @onclick="laden" class="btn btn-primary">laden</button>
+@if (Todoliste == null)
+{
+    <p>Daten bitte laden...</p>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var item in Todoliste)
+        {
+            <li class="list-group-item">
+                @item.title
+            </li>
+        }
+
+    </ul>
+
+}
+
+@code {
+    public List<Todos> Todoliste;
+    async Task laden()
+    {
+        var client = http.CreateClient();
+        Todoliste = await client.GetFromJsonAsync<List<Todos>>("https://jsonplaceholder.typicode.com/todos");
+        // mit Rückgabe Task kein StateHaschanged 
+
+    }
+
+
+}
