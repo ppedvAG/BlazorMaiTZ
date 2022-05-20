@@ -1,0 +1,28 @@
+﻿<h3>BindableComponent</h3>
+<input @bind="temp" />
+<button @onclick="save">save </button>
+@code {
+    string temp;
+    [Parameter]
+    public string Text
+    {
+        get {
+            return temp;
+        }
+
+        set
+        {
+            temp = value;
+            TextChanged.InvokeAsync(temp);
+        }
+    }
+
+    
+    [Parameter]
+    public EventCallback<string> TextChanged { get; set; }
+    void save()
+    {
+        TextChanged.InvokeAsync(temp);
+
+    }
+}
