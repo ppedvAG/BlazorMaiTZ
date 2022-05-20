@@ -1,0 +1,21 @@
+﻿@page "/modal"
+<h3>UseModal</h3>
+<button @onclick="modalopen" class="btn btn-outline-danger" >show</button>
+<ModalPPEDV @ref="modal1" Title="Hallo Welt" OnSave="save">
+    <input class="form-control" @bind="eingabe"/>
+
+</ModalPPEDV>
+@code {
+    string eingabe;
+    ModalPPEDV modal1;
+    void modalopen()
+    {
+        modal1.Show();
+
+    }
+    void save()
+    {
+        
+
+    }
+}
