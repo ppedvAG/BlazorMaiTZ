@@ -1,0 +1,36 @@
+﻿@page "/js"
+@inject IJSRuntime JsRuntime
+<h3>JSPage</h3>
+<button @onclick="alert">alter</button><br />
+<button @onclick="confirm">confirm</button><br />
+<button @onclick="ppedv">pedv</button><br />
+<button @onclick="title">title</button><br />
+<button @onclick="lib">lib</button><br />
+@code {
+    void alert()
+    {
+        JsRuntime.InvokeVoidAsync("alert", "Hallo!");
+
+    }
+    async Task confirm()
+    {
+        var x=  await JsRuntime.InvokeAsync<bool>("confirm", "Hallo!");
+
+    }
+    void ppedv()
+    {
+        JsRuntime.InvokeVoidAsync("ppedv");
+
+    }
+    void title()
+    {
+        JsRuntime.InvokeVoidAsync("eval", "document.title='hallo'");
+
+    }
+    async Task lib()
+    {
+        var lib = new RazorClassLibrary1.ExampleJsInterop(JsRuntime);
+        var x= await lib.Prompt("Hallo Welt");
+
+    }
+}
