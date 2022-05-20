@@ -1,0 +1,17 @@
+﻿@page "/par"
+<h3>UseParameterComponent</h3>
+<CascadingValue Value="@("rot")" Name="Farbe" >
+    <CascadingValue Value="42">
+        <ParameterComponent Titel="Hallo Welt"
+                            MyPerson="new Modul5.Person()"
+                            style="background-color:silver"
+                            hannes="toll">
+            <p>hallow Welt</p>
+            <h3>überschrift</h3>
+        </ParameterComponent>
+
+    </CascadingValue>
+</CascadingValue>
+@code {
+    string rot;
+}
